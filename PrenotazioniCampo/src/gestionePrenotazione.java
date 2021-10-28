@@ -5,9 +5,9 @@ public class gestionePrenotazione {
 	public static void main(String[] args) {
 		
 		Campo c = new Campo();
-		boolean avanti = true;
 		
 		System.out.println("***** BENVENUTO UTENTE *****");
+		boolean avanti = true;
 		while(avanti) {
 			System.out.println("\n0) Nuova prenotazione");
 			System.out.println("1) Cancella prenotazione");
