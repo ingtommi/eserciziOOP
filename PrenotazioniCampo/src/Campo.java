@@ -9,6 +9,7 @@ public class Campo {
 		
 	Scanner input = new Scanner(System.in);
 	
+	//metodo per prenotare
 	public boolean addPrenotazione() {
 		
 		boolean add = true;
@@ -25,6 +26,7 @@ public class Campo {
 		return add;
 	}
 	
+	//metodo per cancellare
 	public boolean removePrenotazione() {
 		 
 		boolean remove = false;
@@ -41,6 +43,7 @@ public class Campo {
 		return remove;
 	}
 	
+	//metodo per visualizzare
 	public void printLista() {
 		
 		for(int j=0; j<10; j++) {
