@@ -10,23 +10,23 @@ public class gestionePrenotazione {
 		System.out.println("***** BENVENUTO UTENTE *****");
 		boolean avanti = true;
 		while(avanti) {
-			System.out.println("\n0) Nuova prenotazione");
-			System.out.println("1) Cancella prenotazione");
-			System.out.println("2) Lista prenotazioni");
-			System.out.println("3) Esci");
+			System.out.println("\n0) Esci");
+			System.out.println("1) Nuova prenotazione");
+			System.out.println("2) Cancella prenotazione");
+			System.out.println("3) Lista prenotazoni");
 			System.out.print("\nSeleziona operazione: ");
 			byte scelta = input.nextByte();
 			switch(scelta) {
-			case 0: c.addPrenotazione();
+			case 1: c.addPrenotazione();
 				    break;
-			case 1: if(c.removePrenotazione())
+			case 2: if(c.removePrenotazione())
 		        		System.out.println("\nPrenotazione cancellata con successo!");
 	        		else
 	        			System.out.println("\nPrenotazione non trovata!");
 				    break;
-			case 2: c.printLista();
+			case 3: c.printLista();
 				    break;
-			case 3: avanti = false;
+			case 0: avanti = false;
 				    break;
 		    
 		  }

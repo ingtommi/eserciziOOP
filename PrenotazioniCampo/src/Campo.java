@@ -14,8 +14,8 @@ public class Campo {
 	//da restituire al main non sapevo come controllare se chiuso 
 	public void addPrenotazione() {
 		
-		System.out.print("\nInserire nome: ");
-		String nome = input.nextLine();
+		System.out.print("\nInserire nome (unica parola): ");
+		String nome = input.next();
 		System.out.print("Inserire orario (ora esatta tra le 9 e le 18 incluse): ");
 		int orario = input.nextInt();
 		if(isClosed(orario))
@@ -35,14 +35,16 @@ public class Campo {
 	public boolean removePrenotazione() {
 		 
 		boolean remove = false;
-		System.out.print("\nInserire nome: ");
-		String nome = input.nextLine();
+		System.out.print("\nInserire nome (unica parola): ");
+		String nome = input.next();
 		System.out.print("Inserire orario (ora esatta tra le 9 e le 18 incluse): ");
 		int orario = input.nextInt();
 		for(int i=0; i<10 && remove == false; i++) {
-			if(lista[i].getNome().equals(nome) && lista[i].getOrario() == orario) {
-				remove = true;
-				lista[i] = null;
+			if(lista[i] != null) {
+				if(lista[i].getNome().equals(nome) && lista[i].getOrario() == orario) {
+					remove = true;
+					lista[i] = null;
+				}
 			}
 		}
 		return remove;
@@ -52,9 +54,10 @@ public class Campo {
 	public void printLista() {
 		
 		boolean check = false;
+		System.out.println("\nLISTA PRENOTAZIONI:\n");
 		for(int j=0; j<10; j++) {
 			if(lista[j] != null) {
-				System.out.println("\nOrario: " + lista[j].getOrario() + ", Nome: " + lista[j].getNome());
+				System.out.println("Orario: " + lista[j].getOrario() + ".00-" + (lista[j].getOrario()+1)+ ".00" + ", Nome: " + lista[j].getNome());
 				check = true;
 			}
 		}
@@ -65,7 +68,7 @@ public class Campo {
 	public boolean isClosed(int orario) {
 		
 		boolean close = false;
-		if(orario <9 || orario > 18)
+		if(orario < 9 || orario > 18)
 			close = true;
 		return close;
 	}
