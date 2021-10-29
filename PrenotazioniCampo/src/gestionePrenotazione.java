@@ -5,6 +5,7 @@ public class gestionePrenotazione {
 	public static void main(String[] args) {
 		
 		Campo c = new Campo();
+		Scanner input = new Scanner(System.in);
 		
 		System.out.println("***** BENVENUTO UTENTE *****");
 		boolean avanti = true;
@@ -14,13 +15,9 @@ public class gestionePrenotazione {
 			System.out.println("2) Lista prenotazioni");
 			System.out.println("3) Esci");
 			System.out.print("\nSeleziona operazione: ");
-			Scanner input = new Scanner(System.in);
 			byte scelta = input.nextByte();
 			switch(scelta) {
-			case 0: if(c.addPrenotazione())
-				        System.out.println("\nPrenotazione effettuata con successo!");
-			        else
-			        	System.out.println("\nCampo occupato!");
+			case 0: c.addPrenotazione();
 				    break;
 			case 1: if(c.removePrenotazione())
 		        		System.out.println("\nPrenotazione cancellata con successo!");
