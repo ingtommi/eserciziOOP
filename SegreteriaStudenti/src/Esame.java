@@ -25,7 +25,7 @@ public class Esame {
     	 return crediti;
      }
 
-    setter
+    //setter
     public void setNome(String nome){
     	this.nome = nome;	
      }
