@@ -13,7 +13,6 @@ public class Campo {
 	//metodo per aggiungere prenotazione, void perchè con una variabile booleana
 	//da restituire al main non sapevo come controllare se chiuso 
 	public void addPrenotazione() {
-		
 		System.out.print("\nInserire nome (unica parola): ");
 		String nome = input.next();
 		System.out.print("Inserire orario (ora esatta tra le 9 e le 18 incluse): ");
