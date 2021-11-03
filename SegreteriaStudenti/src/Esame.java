@@ -12,7 +12,7 @@ public class Esame {
 		this.crediti = crediti;
 	}
 
-	//getter
+	//getter e setter
     public String getNome() {
 		return nome;
 	}
@@ -23,11 +23,6 @@ public class Esame {
 
      public int getCrediti() {
     	 return crediti;
-     }
-
-    //setter
-    public void setNome(String nome){
-    	this.nome = nome;	
      }
 
     public void setVoto(int voto) {
