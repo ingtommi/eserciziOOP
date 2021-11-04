@@ -4,7 +4,8 @@ public class Studente {
 	private String nome;
 	private static double matricolaUltima = 10000;
 	private double matricola;
-	//TODO: piano di studi (lista di esami)
+	
+	
 	
 	
 	//costruttore
