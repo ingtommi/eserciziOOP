@@ -6,14 +6,13 @@ public class Esame {
 	private int crediti;
 	
 	//costruttore
-	
 	public Esame(String nome, int voto, int crediti) {
-		this.nome= nome;
-		this.voto= voto;
-		this.crediti=crediti;
+		this.nome = nome;
+		this.voto = voto;
+		this.crediti = crediti;
 	}
 
-	//getter
+	//getter e setter
     public String getNome() {
 		return nome;
 	}
@@ -23,27 +22,14 @@ public class Esame {
     }
 
      public int getCrediti() {
-	return crediti;
-     }
-
-    public void setNome(String nome){
-	
-	this.nome = nome;	
+    	 return crediti;
      }
 
     public void setVoto(int voto) {
-	
-	this.voto = voto;
+    	this.voto = voto;
     }
 
-   public void setCrediti(int crediti) {
-	
-	this.crediti = crediti;
+    public void setCrediti(int crediti) {
+	   this.crediti = crediti;
     }
-
-
-
-
-
-
 }
