@@ -4,12 +4,12 @@ public class Studente extends Persona {
 	private String nome;
 	private static double matricolaUltima = 10000;
 	private double matricola;
-<<<<<<< HEAD
+
 	
 	
-=======
+
 	private Esame[] pianostudio;
->>>>>>> 9f3b2ec1df8c7b147ef1bad396ee645aef12f4e2
+
 	
 	
 	//costruttore
