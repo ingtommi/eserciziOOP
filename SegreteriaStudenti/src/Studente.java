@@ -5,13 +5,8 @@ public class Studente extends Persona {
 	private static double matricolaUltima = 10000;
 	private double matricola;
 
-	
-	
-
 	private Esame[] pianostudio;
 
-	
-	
 	//costruttore
 	public Studente(String nome, String cognome) {
 		super(nome,cognome); //costruttore superclasse
