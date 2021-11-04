@@ -16,27 +16,10 @@ public class Esame {
 	}
 
 	//getter e setter
-    public String getNome() {
-		return nome;
-	}
-
-    public int getVoto(){
-	    return voto;
-    }
-
-     public int getCrediti() {
-    	 return crediti;
-     }
-     
-     public double getId() {
-    	 return id;
-     }
-
-    public void setVoto(int voto) {
-    	this.voto = voto;
-    }
-
-    public void setCrediti(int crediti) {
-	   this.crediti = crediti;
-    }
+    public String getNome() { return nome; }
+    public int getVoto(){ return voto; }
+    public int getCrediti() { return crediti; }
+    public double getId() { return id; }
+    public void setVoto(int voto) { this.voto = voto; }
+    public void setCrediti(int crediti) { this.crediti = crediti; }
 }
