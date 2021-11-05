@@ -3,59 +3,54 @@ import java.util.*;
 public class CorsoLaurea {
 	
 	private String nome;
-	private int crediti;
-	private ArrayList<Studente> listastudenti;
+	private int creditiTotali;
+	private ArrayList<Studente> listaStudenti = new ArrayList<Studente>(); //altrimenti dava errore
 	
 	//costruttore
-	CorsoLaurea(String nome, int crediti){
+	public CorsoLaurea(String nome, int crediti){
 		this.nome = nome;
-		this.crediti = crediti;
+		this.creditiTotali = crediti;
 	}
 	
-	 public String getNomeCorso() { return this.nome; }
-	 public int getCreditiCorso() { return this.crediti;}
-	 public ArrayList<Studente> getListaStudenti() { return this.listastudenti; }
-	 public void setNomeCorso(String nome) { this.nome = nome;}
-	 public void setListaStudenti(ArrayList <Studente> listastudenti) { this.listastudenti = listastudenti; }
+	public String getNomeCorso() { return this.nome; }
+	public int getCreditiCorso() { return this.creditiTotali;}
+	public ArrayList<Studente> getListaStudenti() { return this.listaStudenti; }
+	public void setNomeCorso(String nome) { this.nome = nome;}
+	public void setCreditiTotali(int creditiTotali) { this.creditiTotali = creditiTotali; }
+	public void setListaStudenti(ArrayList <Studente> listaStudenti) { this.listaStudenti = listaStudenti; }
 
-	
-	public void iscrizione(Studente studente) {
-		if(!listastudenti.contains(studente))
-			listastudenti.add(studente);
+	public void enrollStudente(Studente studente) {
+		if(!this.isPresent(studente))
+			listaStudenti.add(studente);
 	}
 	
-	public Studente findStudent(String nomeStudente) {
+	public Studente findStudente(String nomeStudente) {
 		Studente newstudente = null;
-		for( Studente studente : listastudenti )
-		{
-			if(studente.getNome().equals(nomeStudente)) 
-		   	{
+		for(Studente studente : listaStudenti) {
+			if(studente.getNome().equals(nomeStudente)) {
 				newstudente = studente;
 		   	}
 		}
 		return newstudente;
    }
     
-	public void remove(Studente studente) {
-    	listastudenti.remove(studente);
+	public void removeStudente(Studente studente) {
+    	listaStudenti.remove(studente);
    }
 		
-	public void viewStudenti() {
-		System.out.println(listastudenti);
+	public void viewIscritti() {
+		//utilizzo classe apposita
+		InOut out = new InOut(listaStudenti,nome);
+		out.viewIscritti();
 	}	
 	
-	public void ViewLaureati() {
-		for( Studente studente : listastudenti ) 
-		{
-			if (studente.getIsLaureato()) 
-			{
-				System.out.println(studente);
-			}
-		}
+	public void viewLaureati() {
+		//utilizzo classe apposita
+		InOut out = new InOut(listaStudenti,nome);
+		out.viewLaureati();
 	}
-
-
-
-
-
+	
+	private boolean isPresent(Studente studente) {
+		return listaStudenti.contains(studente);
+	}
 }

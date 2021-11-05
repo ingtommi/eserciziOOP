@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Studente extends Persona {
 
-	private static double matricolaUltima = 10000;
-	private double matricola;
+	private static int matricolaUltima = 100;
+	private int matricola;
 	private ArrayList<Esame> pianoStudio;
 	private int crediti = 0;
 	private final int maxCrediti = 180;
@@ -24,14 +24,8 @@ public class Studente extends Persona {
 	public int getCrediti() { return this.crediti; }
 	public float getMedia() { return this.mediaAritmetica; }
 	public boolean getIsLaureato() { return isLaureato(); }
-	public void setMatricola(double matricola) { this.matricola = matricola; }
-	
-	public void getPiano() {
-		System.out.println("***** PIANO DI STUDI *****\n");
-		for(Esame esame : pianoStudio) {
-			System.out.println("Esame: " + esame.getNome());
-		}
-	}
+	public ArrayList<Esame> getPiano() { return this.pianoStudio; }
+	public void setMatricola(int matricola) { this.matricola = matricola; }
 	
 	public void createPiano() {
 		pianoStudio = new ArrayList<Esame>();
@@ -76,22 +70,25 @@ public class Studente extends Persona {
 		}
 	}
 	
+	public void viewPiano() {
+		//utilizzo classe apposita
+		InOut out = new InOut(pianoStudio,matricola,crediti,mediaAritmetica);
+		out.viewPiano();
+	}
+	
+	public void viewLibretto() {
+		//utilizzo classe apposita
+		InOut out = new InOut(pianoStudio,matricola,crediti,mediaAritmetica);
+		out.viewLibretto();
+	}
+	
 	public boolean isLaureato() {
 		if(crediti == maxCrediti)
 			laureato = true;
 		return laureato;
 	}
 	
-	public boolean isPresent(Esame esame) {
+	private boolean isPresent(Esame esame) {
 		return pianoStudio.contains(esame);
-	}
-
-	public void viewLibretto() {
-		System.out.println("\n***** LIBRETTO STUDENTE *****\n");
-		for(Esame esame : pianoStudio) {
-			if(esame.getVoto()>=18)
-				System.out.println("Esame: " + esame.getNome() + " | Voto: " + esame.getVoto() + " | Crediti: " + esame.getCrediti());
-				}
-		System.out.println("\nCrediti totali: " + this.crediti + " | Media: " + this.mediaAritmetica);
 	}
 }
