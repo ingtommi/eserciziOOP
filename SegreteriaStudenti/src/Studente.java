@@ -23,6 +23,7 @@ public class Studente extends Persona {
 	public double getMatricola() { return this.matricola; }
 	public int getCrediti() { return this.crediti; }
 	public float getMedia() { return this.mediaAritmetica; }
+	public boolean getIsLaureato() { return isLaureato(); }
 	public void setMatricola(double matricola) { this.matricola = matricola; }
 	
 	public void getPiano() {
