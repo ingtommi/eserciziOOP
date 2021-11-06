@@ -1,4 +1,8 @@
+package Persone;
+
 import java.util.*;
+import Main.Esame;
+import Main.InOut;
 
 public class Studente extends Persona {
 
@@ -6,11 +10,11 @@ public class Studente extends Persona {
 	private int matricola;
 	private ArrayList<Esame> pianoStudio;
 	private int crediti = 0;
-	private final int maxCrediti = 180;
     private int esamiSuperati = 0;
     private float mediaAritmetica = 0;
     private int sommaVoti= 0;
     private boolean laureato = false;
+    private final int maxCrediti = 180;
 	
     //costruttore
 	public Studente(String nome, String cognome) {
@@ -20,7 +24,7 @@ public class Studente extends Persona {
 	}
 	
 	//getter e setter
-	public double getMatricola() { return this.matricola; }
+	public int getMatricola() { return this.matricola; }
 	public int getCrediti() { return this.crediti; }
 	public float getMedia() { return this.mediaAritmetica; }
 	public boolean getIsLaureato() { return isLaureato(); }

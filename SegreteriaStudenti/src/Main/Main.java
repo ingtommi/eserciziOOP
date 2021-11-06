@@ -1,3 +1,8 @@
+package Main;
+
+//importo file di altri packages (* = tutti i file)
+import Corsi.*;
+import Persone.*;
 
 public class Main {
 
@@ -10,18 +15,20 @@ public class Main {
 		//crea oggetto Studente
 		Studente st1 = new Studente("Marco","Ciampichetti");
 		Studente st2 = new Studente("Tommaso","Fava");
+		Studente st3 = new Studente("Mario","Rossi");
 		//crea oggetto CorsoLaurea
-		CorsoLaurea cl1 = new CorsoLaurea("IngegneriaElettronica",180);
-		CorsoLaurea cl2 = new CorsoLaurea("IngegneriaMeccanica",180);
+		CorsoLaurea ct1 = new CorsoTriennale("IngegneriaElettronica");
+		CorsoLaurea ct2 = new CorsoMagistrale("IngegneriaMeccanica");
 		//iscrive studente al corso
-		cl1.enrollStudente(st1);
-		cl1.enrollStudente(st2);
+		ct1.enrollStudente(st1);
+		ct1.enrollStudente(st2);
+		ct2.enrollStudente(st3);
 		//visualizza iscritti
-		cl1.viewIscritti();
-		cl2.viewIscritti();
+		ct1.viewIscritti();
+		ct2.viewIscritti();
 		//visualizza laureati
-		cl1.viewLaureati();
-		cl2.viewLaureati();
+		ct1.viewLaureati();
+		ct2.viewLaureati();
 		//crea piano studio vuoto --> N.B. se non creo il piano non posso utilizzare viewPiano()!
 		st1.createPiano();
 		st2.createPiano();

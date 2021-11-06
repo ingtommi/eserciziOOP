@@ -1,22 +1,23 @@
-import java.util.*;
+package Corsi;
 
+import java.util.*;
+import Main.InOut;
+import Persone.*;
+
+//SUPERCLASSE
 public class CorsoLaurea {
 	
 	private String nome;
-	private int creditiTotali;
 	private ArrayList<Studente> listaStudenti = new ArrayList<Studente>(); //altrimenti dava errore
 	
 	//costruttore
-	public CorsoLaurea(String nome, int crediti){
+	public CorsoLaurea(String nome){
 		this.nome = nome;
-		this.creditiTotali = crediti;
 	}
 	
 	public String getNomeCorso() { return this.nome; }
-	public int getCreditiCorso() { return this.creditiTotali;}
 	public ArrayList<Studente> getListaStudenti() { return this.listaStudenti; }
 	public void setNomeCorso(String nome) { this.nome = nome;}
-	public void setCreditiTotali(int creditiTotali) { this.creditiTotali = creditiTotali; }
 	public void setListaStudenti(ArrayList <Studente> listaStudenti) { this.listaStudenti = listaStudenti; }
 
 	public void enrollStudente(Studente studente) {

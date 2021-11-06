@@ -1,4 +1,7 @@
+package Main;
+
 import java.util.*;
+import Persone.Studente;
 
 public class InOut {
 
@@ -25,24 +28,24 @@ public class InOut {
     
 	//OUTPUT piano di studi
 	public void viewPiano() {
-		System.out.println("\n***** PIANO DI STUDI DELLA MATRICOLA: " + this.matricola + " *****\n");
+		System.out.println("\n***** PIANO DI STUDI DELLA MATRICOLA #" + this.matricola + " *****\n");
 		if(pianoStudio.isEmpty())
 			System.out.println("Nessun esame ancora inserito!");
 		else
 			for(Esame esame : pianoStudio) {
-				System.out.println("Insegnamento: " + esame.getNome());
+				System.out.println("Insegnamento: " + esame.getNome() + " | Crediti: " + esame.getCrediti());
 		}
 	}
 	
 	//OUTPUT libretto
 	public void viewLibretto() {
 		int superati = 0;
-		System.out.println("\n***** LIBRETTO DELLA MATRICOLA: " + this.matricola + " *****\n");
+		System.out.println("\n***** LIBRETTO DELLA MATRICOLA #" + this.matricola + " *****\n");
 		for(Esame esame : pianoStudio) {
 			if(esame.getVoto()>=18) {
 				superati++;
-				System.out.println("Insegnamento: " + esame.getNome() + " | Voto: " + esame.getVoto() 
-				+ " | Crediti: " + esame.getCrediti());
+				System.out.println("Insegnamento: " + esame.getNome() + " | Crediti: " + esame.getCrediti() 
+				+ " | Voto: " + esame.getVoto());
 			}
 		}
 		if(superati == 0)
@@ -58,7 +61,8 @@ public class InOut {
 			System.out.println("Nessuno studente iscritto!");
 		else 
 			for(Studente studente : listaStudenti) {
-				System.out.println("Studente: " + studente.getNome() + " " + studente.getCognome());
+				System.out.println("Studente: " + studente.getNome() + " " + studente.getCognome()
+				+ " | Matricola #" + studente.getMatricola());
 		}
 	}
 	
@@ -69,7 +73,8 @@ public class InOut {
 		for(Studente studente : listaStudenti) {
 			if(studente.getIsLaureato()) {
 				laureati++;
-				System.out.println("Studente: " + studente.getNome() + " " + studente.getCognome());
+				System.out.println("Studente: " + studente.getNome() + " " + studente.getCognome()
+				+ " | Matricola #" +  studente.getMatricola());
 			}
 		}
 		if(laureati == 0)
