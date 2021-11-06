@@ -1,6 +1,8 @@
 package Main;
 
 import java.util.*;
+
+import Esami.*;
 import Persone.Studente;
 
 public class InOut {
@@ -26,6 +28,8 @@ public class InOut {
 		this.nomeCorso = nomeCorso;
 	}
     
+	//TODO: aggiugere menù input
+	
 	//OUTPUT piano di studi
 	public void viewPiano() {
 		System.out.println("\n***** PIANO DI STUDI DELLA MATRICOLA #" + this.matricola + " *****\n");
@@ -42,7 +46,7 @@ public class InOut {
 		int superati = 0;
 		System.out.println("\n***** LIBRETTO DELLA MATRICOLA #" + this.matricola + " *****\n");
 		for(Esame esame : pianoStudio) {
-			if(esame.getVoto()>=18) {
+			if(esame.isSuperato()) {
 				superati++;
 				System.out.println("Insegnamento: " + esame.getNome() + " | Crediti: " + esame.getCrediti() 
 				+ " | Voto: " + esame.getVoto());

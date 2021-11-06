@@ -1,7 +1,9 @@
 package Persone;
 
 import java.util.*;
-import Main.Esame;
+
+import Corsi.*;
+import Esami.*;
 import Main.InOut;
 
 public class Studente extends Persona {
@@ -10,10 +12,11 @@ public class Studente extends Persona {
 	private int matricola;
 	private ArrayList<Esame> pianoStudio;
 	private int crediti = 0;
-    private int esamiSuperati = 0;
+    private int esamiProfitto = 0;
     private float mediaAritmetica = 0;
     private int sommaVoti= 0;
     private boolean laureato = false;
+    //TODO: eliminare maxCrediti e usare quelli specifici per ogni CorsoLaurea
     private final int maxCrediti = 180;
 	
     //costruttore
@@ -35,6 +38,7 @@ public class Studente extends Persona {
 		pianoStudio = new ArrayList<Esame>();
 	}
 	
+	//TODO: controllare che il piano non superi il numero massimo consentito
 	public void addEsame(Esame esame) {
 		if(!this.isPresent(esame))
 			pianoStudio.add(esame);
@@ -64,13 +68,24 @@ public class Studente extends Persona {
 		return newEsame;
 	}
 	
-	public void insertEsito(Esame esame, int voto) {
-		if(voto>=18) {
-			esame.setVoto(voto);
-			crediti += esame.getCrediti();
-			esamiSuperati++;
-			sommaVoti += esame.getVoto();
-			mediaAritmetica = (float) sommaVoti/esamiSuperati;
+	public void insertEsito(Profitto esame, int voto) {
+		if(pianoStudio.contains(esame)) {
+			if(voto>=18) {
+				esame.setVoto(voto);
+				crediti += esame.getCrediti();
+				esamiProfitto++;
+				sommaVoti += esame.getVoto();
+				mediaAritmetica = (float) sommaVoti/esamiProfitto;
+			}
+		}
+	}
+	
+	public void insertEsito(Idoneita esame, int voto) {
+		if(pianoStudio.contains(esame)) {
+			if(voto>=18) {
+				esame.setVoto(voto);
+				crediti += esame.getCrediti();
+			}
 		}
 	}
 	
