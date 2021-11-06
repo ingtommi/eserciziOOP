@@ -10,11 +10,12 @@ public class Studente extends Persona {
 
 	private static int matricolaUltima = 100;
 	private int matricola;
-	private ArrayList<Esame> pianoStudio;
+	private ArrayList<Esame> pianoStudio = new ArrayList<Esame>();
 	private int crediti = 0;
     private int esamiProfitto = 0;
     private float mediaAritmetica = 0;
     private int sommaVoti= 0;
+    //TODO: controllare anche qui se codice vale in generale o no
 	Test test = new Test();
 	InOut out = new InOut();
 	
@@ -32,19 +33,17 @@ public class Studente extends Persona {
 	public ArrayList<Esame> getPiano() { return this.pianoStudio; }
 	public void setMatricola(int matricola) { this.matricola = matricola; }
 	
-	public void createPiano() {
-		pianoStudio = new ArrayList<Esame>();
-	}
-	
 	public void addEsame(Esame esame) {
-		if(!test.isFull(pianoStudio,esame.getCrediti())) {
-			if(test.isPresent(pianoStudio,esame))
+		if(test.isOpen()) {
+			if(!test.isFull(pianoStudio,esame.getCrediti())) {
 				pianoStudio.add(esame);
+			}
 		}
 	}
 	
 	public void removeEsame(Esame esame) {
-		pianoStudio.remove(esame);
+		if(test.isOpen())
+			pianoStudio.remove(esame);
 	}
 	
 	public Esame findEsame(String nomeEsame) {
@@ -68,7 +67,7 @@ public class Studente extends Persona {
 	}
 	
 	public void insertEsito(Profitto esame, int voto) {
-		if(test.isPresent(pianoStudio, esame)) {
+		if(test.isPresent(pianoStudio,esame)) {
 			if(voto>=18) {
 				esame.setVoto(voto);
 				crediti += esame.getCrediti();
@@ -80,7 +79,7 @@ public class Studente extends Persona {
 	}
 	
 	public void insertEsito(Idoneita esame, int voto) {
-		if(test.isPresent(pianoStudio, esame)) {
+		if(test.isPresent(pianoStudio,esame)) {
 			if(voto>=18) {
 				esame.setVoto(voto);
 				crediti += esame.getCrediti();

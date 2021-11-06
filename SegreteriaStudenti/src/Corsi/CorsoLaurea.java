@@ -7,19 +7,19 @@ import Persone.*;
 //SUPERCLASSE
 public class CorsoLaurea {
 	
-	private String nome;
-	private ArrayList<Studente> listaStudenti = new ArrayList<Studente>(); //altrimenti dava errore
+	private String nomeCorso;
+	private ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
 	InOut out = new InOut();
 	Test test = new Test();
 	
 	//costruttore
 	public CorsoLaurea(String nome){
-		this.nome = nome;
+		this.nomeCorso = nome;
 	}
 	
-	public String getNomeCorso() { return this.nome; }
+	public String getNomeCorso() { return this.nomeCorso; }
 	public ArrayList<Studente> getListaStudenti() { return this.listaStudenti; }
-	public void setNomeCorso(String nome) { this.nome = nome;}
+	public void setNomeCorso(String nome) { this.nomeCorso = nome;}
 	public void setListaStudenti(ArrayList <Studente> listaStudenti) { this.listaStudenti = listaStudenti; }
 
 	public void enrollStudente(Studente studente) {
@@ -27,15 +27,26 @@ public class CorsoLaurea {
 			listaStudenti.add(studente);
 	}
 	
-	public Studente findStudente(String nomeStudente) {
+	public Studente findStudente(String cognomeStudente) {
 		Studente newstudente = null;
 		for(Studente studente : listaStudenti) {
-			if(studente.getNome().equals(nomeStudente)) {
+			if(studente.getCognome().equals(cognomeStudente)) {
+				newstudente = studente;
+		   	}
+		}
+		return newstudente;
+    }
+	
+	public Studente findStudente(int matricolaStudente) {
+		Studente newstudente = null;
+		for(Studente studente : listaStudenti) {
+			if(studente.getMatricola() == matricolaStudente) {
 				newstudente = studente;
 		   	}
 		}
 		return newstudente;
    }
+	
     
 	public void removeStudente(Studente studente) {
     	listaStudenti.remove(studente);
@@ -43,11 +54,11 @@ public class CorsoLaurea {
 		
 	public void viewIscritti() {
 		//utilizzo classe apposita
-		out.viewIscritti(listaStudenti,nome);
+		out.viewIscritti(listaStudenti,nomeCorso);
 	}	
 	
 	public void viewLaureati() {
 		//utilizzo classe apposita
-		out.viewLaureati(listaStudenti,nome);
+		out.viewLaureati(listaStudenti,nomeCorso);
 	}
 }

@@ -3,6 +3,7 @@ package Main;
 import java.util.*;
 import Esami.*;
 import Persone.*;
+import Corsi.*;
 
 public class Test {
 	
@@ -13,6 +14,14 @@ public class Test {
 
 	public Test() {}
 	
+	public boolean getFull() { return this.full; }
+	
+	//TODO: modificare o togliere
+	public boolean isOpen() {
+		return true;
+	}
+	
+	//controlla se con nuovo esame si sfora il massimo 
 	public boolean isFull(ArrayList<Esame> pianoStudio, int crediti) {
 		int creditiTotali = 0;
 		for(int i=0; i<pianoStudio.size(); i++) {
@@ -23,18 +32,19 @@ public class Test {
 		return full;
 	}
 	
+	//controlla se studente ha raggiunto massimo crediti
 	public boolean isLaureato(Studente studente) {
 		if(studente.getCrediti() == maxCrediti)
 			laureato = true;
 		return laureato;
 	}
 	
-	//esame presente in piano
+	//controlla se esame presente in piano
 	public boolean isPresent(ArrayList<Esame> pianoStudio, Esame esame) {
 		return pianoStudio.contains(esame);
 	}
 		
-	//studente presente in corso
+	//controlla se studente presente in corso
 	public boolean isPresent(ArrayList<Studente> listaStudenti, Studente studente) {
 		return listaStudenti.contains(studente);
 	}
