@@ -4,7 +4,7 @@ import java.util.*;
 
 import Corsi.*;
 import Esami.*;
-import Main.InOut;
+import Main.*;
 
 public class Studente extends Persona {
 
@@ -15,9 +15,8 @@ public class Studente extends Persona {
     private int esamiProfitto = 0;
     private float mediaAritmetica = 0;
     private int sommaVoti= 0;
-    private boolean laureato = false;
-    //TODO: eliminare maxCrediti e usare quelli specifici per ogni CorsoLaurea
-    private final int maxCrediti = 180;
+	Test test = new Test();
+	InOut out = new InOut();
 	
     //costruttore
 	public Studente(String nome, String cognome) {
@@ -30,7 +29,6 @@ public class Studente extends Persona {
 	public int getMatricola() { return this.matricola; }
 	public int getCrediti() { return this.crediti; }
 	public float getMedia() { return this.mediaAritmetica; }
-	public boolean getIsLaureato() { return isLaureato(); }
 	public ArrayList<Esame> getPiano() { return this.pianoStudio; }
 	public void setMatricola(int matricola) { this.matricola = matricola; }
 	
@@ -38,11 +36,12 @@ public class Studente extends Persona {
 		pianoStudio = new ArrayList<Esame>();
 	}
 	
-	//TODO: controllare che il piano non superi il numero massimo consentito
 	public void addEsame(Esame esame) {
-		if(!this.isPresent(esame))
-			pianoStudio.add(esame);
+		if(!test.isFull(pianoStudio,esame.getCrediti())) {
+			if(test.isPresent(pianoStudio,esame))
+				pianoStudio.add(esame);
 		}
+	}
 	
 	public void removeEsame(Esame esame) {
 		pianoStudio.remove(esame);
@@ -69,7 +68,7 @@ public class Studente extends Persona {
 	}
 	
 	public void insertEsito(Profitto esame, int voto) {
-		if(pianoStudio.contains(esame)) {
+		if(test.isPresent(pianoStudio, esame)) {
 			if(voto>=18) {
 				esame.setVoto(voto);
 				crediti += esame.getCrediti();
@@ -81,7 +80,7 @@ public class Studente extends Persona {
 	}
 	
 	public void insertEsito(Idoneita esame, int voto) {
-		if(pianoStudio.contains(esame)) {
+		if(test.isPresent(pianoStudio, esame)) {
 			if(voto>=18) {
 				esame.setVoto(voto);
 				crediti += esame.getCrediti();
@@ -91,23 +90,11 @@ public class Studente extends Persona {
 	
 	public void viewPiano() {
 		//utilizzo classe apposita
-		InOut out = new InOut(pianoStudio,matricola,crediti,mediaAritmetica);
-		out.viewPiano();
+		out.viewPiano(pianoStudio,matricola);
 	}
 	
 	public void viewLibretto() {
 		//utilizzo classe apposita
-		InOut out = new InOut(pianoStudio,matricola,crediti,mediaAritmetica);
-		out.viewLibretto();
-	}
-	
-	public boolean isLaureato() {
-		if(crediti == maxCrediti)
-			laureato = true;
-		return laureato;
-	}
-	
-	private boolean isPresent(Esame esame) {
-		return pianoStudio.contains(esame);
+		out.viewLibretto(pianoStudio,matricola,crediti,mediaAritmetica);
 	}
 }

@@ -7,32 +7,15 @@ import Persone.Studente;
 
 public class InOut {
 
-	private ArrayList<Esame> pianoStudio;
-	private ArrayList<Studente> listaStudenti;
-	private int creditiAcquisiti;
-	private float mediaAritmetica;
-	private int matricola;
-	private String nomeCorso;
+	Test test = new Test();
 	
-	//costruttore1
-	public InOut(ArrayList<Esame> pianoStudio, int matricola, int creditiAcquisiti, float mediaAritmetica) {
-		this.pianoStudio = pianoStudio;
-		this.matricola = matricola;
-		this.creditiAcquisiti = creditiAcquisiti;
-		this.mediaAritmetica = mediaAritmetica;
-	}
-	
-	//costruttore2
-	public InOut(ArrayList<Studente> listaStudenti, String nomeCorso) {
-		this.listaStudenti = listaStudenti;
-		this.nomeCorso = nomeCorso;
-	}
+	public InOut() {}
     
 	//TODO: aggiugere menù input
 	
 	//OUTPUT piano di studi
-	public void viewPiano() {
-		System.out.println("\n***** PIANO DI STUDI DELLA MATRICOLA #" + this.matricola + " *****\n");
+	public void viewPiano(ArrayList<Esame> pianoStudio, int matricola) {
+		System.out.println("\n***** PIANO DI STUDI DELLA MATRICOLA #" + matricola + " *****\n");
 		if(pianoStudio.isEmpty())
 			System.out.println("Nessun esame ancora inserito!");
 		else
@@ -42,9 +25,9 @@ public class InOut {
 	}
 	
 	//OUTPUT libretto
-	public void viewLibretto() {
+	public void viewLibretto(ArrayList<Esame> pianoStudio, int matricola, int crediti, float media) {
 		int superati = 0;
-		System.out.println("\n***** LIBRETTO DELLA MATRICOLA #" + this.matricola + " *****\n");
+		System.out.println("\n***** LIBRETTO DELLA MATRICOLA #" + matricola + " *****\n");
 		for(Esame esame : pianoStudio) {
 			if(esame.isSuperato()) {
 				superati++;
@@ -55,12 +38,12 @@ public class InOut {
 		if(superati == 0)
 			System.out.println("Nessun esame ancora superato!");
 		else
-			System.out.println("\nCrediti totali: " + this.creditiAcquisiti + " | Media: " + this.mediaAritmetica);
+			System.out.println("\nCrediti totali: " + crediti + " | Media: " + media);
 	}
 	
 	//OUTPUT iscritti
-	public void viewIscritti() {
-		System.out.println("\n***** STUDENTI ISCRITTI A: " + this.nomeCorso + " *****\n");
+	public void viewIscritti(ArrayList<Studente> listaStudenti, String nome) {
+		System.out.println("\n***** STUDENTI ISCRITTI A: " + nome + " *****\n");
 		if(listaStudenti.isEmpty())
 			System.out.println("Nessuno studente iscritto!");
 		else 
@@ -71,11 +54,11 @@ public class InOut {
 	}
 	
 	//OUTPUT laureati
-	public void viewLaureati() {
+	public void viewLaureati(ArrayList<Studente> listaStudenti, String nome) {
 		int laureati = 0;
-		System.out.println("\n***** STUDENTI LAUREATI IN: " + this.nomeCorso + " *****\n");
+		System.out.println("\n***** STUDENTI LAUREATI IN: " + nome + " *****\n");
 		for(Studente studente : listaStudenti) {
-			if(studente.getIsLaureato()) {
+			if(test.isLaureato(studente)) {
 				laureati++;
 				System.out.println("Studente: " + studente.getNome() + " " + studente.getCognome()
 				+ " | Matricola #" +  studente.getMatricola());
@@ -84,17 +67,4 @@ public class InOut {
 		if(laureati == 0)
 			System.out.println("Nessuno studente ancora laureato!");
 	}
-	
-	/*//metodo ausiliario per avere visualizzazione migliore di viewLibretto()
-	//ritorna lunghezza del nome più lungo dell'esame tra quelli superati
-	private int maxLength(ArrayList<Esame> pianoStudio) {
-		int length = 0;
-		for(int i=0; i<pianoStudio.size(); i++) {
-			if(pianoStudio.get(i).getVoto()>=18) {
-				if(pianoStudio.get(i).getNome().length()>length)
-					length = pianoStudio.get(i).getNome().length();	
-			}	
-		}	
-		return length;
-	}*/
 }

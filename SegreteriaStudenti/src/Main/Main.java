@@ -29,7 +29,7 @@ public class Main {
 		//visualizza iscritti
 		ct1.viewIscritti();
 		//visualizza laureati
-		ct1.viewLaureati();
+		ct2.viewLaureati();
 		//crea piano studio vuoto --> N.B. se non creo il piano non posso utilizzare viewPiano()!
 		st1.createPiano();
 		st2.createPiano();
@@ -49,6 +49,6 @@ public class Main {
         st2.insertEsito(es4,23);
         //visualizza libretto
         st1.viewLibretto();
-        st2.viewLibretto();
+        st2.viewLibretto(); //es5 non fa media
 	}
 }

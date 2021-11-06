@@ -1,7 +1,7 @@
 package Corsi;
 
 import java.util.*;
-import Main.InOut;
+import Main.*;
 import Persone.*;
 
 //SUPERCLASSE
@@ -9,6 +9,8 @@ public class CorsoLaurea {
 	
 	private String nome;
 	private ArrayList<Studente> listaStudenti = new ArrayList<Studente>(); //altrimenti dava errore
+	InOut out = new InOut();
+	Test test = new Test();
 	
 	//costruttore
 	public CorsoLaurea(String nome){
@@ -21,7 +23,7 @@ public class CorsoLaurea {
 	public void setListaStudenti(ArrayList <Studente> listaStudenti) { this.listaStudenti = listaStudenti; }
 
 	public void enrollStudente(Studente studente) {
-		if(!this.isPresent(studente))
+		if(!test.isPresent(listaStudenti,studente))
 			listaStudenti.add(studente);
 	}
 	
@@ -41,17 +43,11 @@ public class CorsoLaurea {
 		
 	public void viewIscritti() {
 		//utilizzo classe apposita
-		InOut out = new InOut(listaStudenti,nome);
-		out.viewIscritti();
+		out.viewIscritti(listaStudenti,nome);
 	}	
 	
 	public void viewLaureati() {
 		//utilizzo classe apposita
-		InOut out = new InOut(listaStudenti,nome);
-		out.viewLaureati();
-	}
-	
-	private boolean isPresent(Studente studente) {
-		return listaStudenti.contains(studente);
+		out.viewLaureati(listaStudenti,nome);
 	}
 }
