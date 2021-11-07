@@ -39,6 +39,24 @@ public class Test {
 		return laureato;
 	}
 	
+	/*public boolean isLaureato(Studente studente, CorsoTriennale corso) {
+		if(studente.getCrediti() == corso.getCrediti())
+			laureato = true;
+		return laureato;
+	}
+	
+	public boolean isLaureato(Studente studente, CorsoMagistrale corso) {
+		if(studente.getCrediti() == corso.getCrediti())
+			laureato = true;
+		return laureato;
+	}
+	
+	public boolean isLaureato(Studente studente, CorsoUnico corso) {
+		if(studente.getCrediti() == corso.getCrediti())
+			laureato = true;
+		return laureato;
+	}*/
+	
 	//controlla se esame presente in piano
 	public boolean isPresent(ArrayList<Esame> pianoStudio, Esame esame) {
 		return pianoStudio.contains(esame);
