@@ -3,28 +3,32 @@ package Main;
 import java.util.*;
 
 import Esami.*;
-import Persone.Studente;
+import Persone.*;
+import Corsi.*;
 
 public class InOut {
 
-	boolean avanti = true;
+	boolean avanti1 = true;
 	Scanner input = new Scanner(System.in);
-	//TODO: controllare se generale oppure no
 	Test test = new Test();
 	
+	//costruttore
 	public InOut() {}
     
-	//TODO: completare menù input
+	//TODO: fare in modo che nei sottomenu admin/studente dopo una azione si possa tornare
+	      //scelte e farne altre
 	public void azioni() {
 		System.out.println("\n***** BENVENUTO UTENTE *****\n");
-		while(avanti) {
+		while(avanti1) {
+			System.out.println();
 			System.out.println("0) Esci");
 			System.out.println("1) Admin");
 			System.out.println("2) Studente");
 			System.out.print("\nSeleziona: ");
 			byte scelta1 = input.nextByte();
+			System.out.println();
 			switch(scelta1) {
-			case 0: avanti = false;
+			case 0: avanti1 = false;
 					break;
 			case 1: System.out.println("0) Esci");
 					System.out.println("1) Iscrivi studente al corso");
@@ -41,56 +45,198 @@ public class InOut {
 					System.out.println("12) Visualizza libretto");
 					System.out.print("\nSeleziona: ");
 					byte scelta2 = input.nextByte();
+					System.out.println();
 					switch(scelta2) {
-					case 0: avanti = false;
+					case 0: avanti1 = false;
 							break;
-					case 1: 
+					case 1: System.out.println("1) Corso triennale");
+							System.out.println("2) Corso magistrale");
+							System.out.println("3) Corso a ciclo unico");
+							System.out.print("\nSeleziona: ");
+							byte scelta4 = input.nextByte();
+							System.out.println();
+							switch(scelta4) {
+							case 1: triennale().enrollStudente(studente()); //utilizzo metodi ausiliari per evitare di scrivere sempre stesso codice di input
+									break;
+							case 2: magistrale().enrollStudente(studente());
+									break;
+							case 3: unico().enrollStudente(studente());	
+									break;
+							}
 							break;
-					case 2:
+					case 2: System.out.println("1) Cerca per cognome");
+							System.out.println("2) Cerca per matricola");
+							System.out.print("\nSeleziona: ");
+							byte scelta5 = input.nextByte();
+							System.out.println();
+							switch(scelta5) {
+							case 1: System.out.print("Inserisci cognome studente: ");
+									String cognome = input.next();
+									corso().findStudente(cognome);
+									break;
+							case 2: System.out.print("Inserisci matricola studente: ");
+									int matricola = input.nextInt();
+									corso().findStudente(matricola);
+									break;
+							}
 							break;
-					case 3:
+					case 3: corso().viewIscritti();
 							break;
-					case 4:
+					case 4: corso().viewLaureati();
 							break;
-					case 5:
+					case 5: admin().openPiano();
 							break;
-					case 6:
+					case 6: admin().closePiano();
 							break;
-					case 7:
+					case 7: studente().viewPiano();
 							break;
-					case 8:
+					case 8: studente().addEsame(esame());
 							break;
-					case 9:
+					case 9: studente().removeEsame(esame());
 							break;
-					case 10:
+					case 10:System.out.println("1) Cerca per nome: ");
+							System.out.println("2) Cerca per ID: ");
+							System.out.print("\nSeleziona: ");
+							byte scelta6 = input.nextByte();
+							System.out.println();
+							switch(scelta6) {
+							case 1: studente().findEsame(nomeEsame());
+									break;
+							case 2: studente().findEsame(idEsame());
+									break;
+							}
 							break;
-					case 11:
+					case 11:System.out.println("1) Esame di profitto");
+							System.out.println("2) Esame di idoneità");
+							System.out.print("\nSeleziona: ");
+							byte scelta7 = input.nextByte();
+							System.out.println();
+							switch(scelta7) {
+							case 1: studente().insertEsito(profitto(),voto());
+									break;
+							case 2: studente().insertEsito(ido(),voto());
+									break;
+							}
 							break;
-					case 12:
+					case 12:studente().viewLibretto();
 							break;
 					}
+					break;
 			case 2: System.out.println("0) Esci");
-					System.out.println("1) Visalizza piano di studio");
+					System.out.println("1) Visualizza piano di studio");
 					System.out.println("2) Aggiungi esame al piano di studio");
 					System.out.println("3) Rimuovi esame dal piano di studio");
 					System.out.println("4) Visualizza libretto");
 					System.out.print("\nSeleziona: ");
 					byte scelta3 = input.nextByte();
+					System.out.println();
 					switch(scelta3) {
-					case 0: avanti = false;
+					case 0: avanti1 = false;
 							break;
-					case 1:
+					case 1: studente().viewPiano();
 							break;
-					case 2:
+					case 2: studente().addEsame(esame());
 							break;
-					case 3:
+					case 3: studente().removeEsame(esame());
 							break;
-					case 4:
+					case 4: studente().viewLibretto();
 							break;
 					}
 			}
 		}
 		System.out.println("\nArrivederci!");
+	}
+	
+	//metodi ausiliari per semplificare codice switch-case
+	private Studente studente() {
+		System.out.print("Inserisci nome studente: ");
+		String nome = input.next();
+		System.out.print("Inserisci cognome studente: ");
+		String cognome = input.next();
+		Studente studente = new Studente(nome,cognome);
+		return studente;
+	}
+	
+	private Amministratore admin() {
+		System.out.print("Inserisci nome admin: ");
+		String nome = input.next();
+		System.out.print("Inserisci cognome admin: ");
+		String cognome = input.next();
+		Amministratore admin = new Amministratore(nome,cognome);
+		return admin;
+	}
+	
+	private Esame esame() {
+		System.out.print("Inserisci nome esame: ");
+		String nome = input.next();
+		System.out.print("Inserisci numero crediti: ");
+		int cfu = input.nextInt();
+		Esame esame = new Esame(nome,cfu);
+		return esame;
+	}
+	
+	private Profitto profitto() {
+		System.out.print("Inserisci nome esame: ");
+		String nome = input.next();
+		System.out.print("Inserisci numero crediti: ");
+		int cfu = input.nextInt();
+		Profitto profitto = new Profitto(nome,cfu);
+		return profitto;
+	}
+	
+	private Idoneita ido() {
+		System.out.print("Inserisci nome esame: ");
+		String nome = input.next();
+		System.out.print("Inserisci numero crediti: ");
+		int cfu = input.nextInt();
+		Idoneita ido = new Idoneita(nome,cfu);
+		return ido;
+	}
+	
+	private CorsoTriennale triennale() {
+		System.out.print("Inserisci nome corso: ");
+		String nome = input.next();
+		CorsoTriennale triennale = new CorsoTriennale(nome);
+		return triennale;
+	}
+	
+	private CorsoMagistrale magistrale() {
+		System.out.print("Inserisci nome corso: ");
+		String nome = input.next();
+		CorsoMagistrale magistrale = new CorsoMagistrale(nome);
+		return magistrale;
+	}
+	
+	private CorsoUnico unico() {
+		System.out.print("Inserisci nome corso: ");
+		String nome = input.next();
+		CorsoUnico unico = new CorsoUnico(nome);
+		return unico;
+	}
+	
+	private CorsoLaurea corso() {
+		System.out.print("Inserisci nome corso: ");
+		String nome = input.next();
+		CorsoLaurea corso = new CorsoLaurea(nome);
+		return corso;
+	}
+	
+	private int voto() {
+		System.out.print("Inserisci voto esame: ");
+		int voto = input.nextInt();
+		return voto;
+	}
+	
+	private String nomeEsame() {
+		System.out.print("Inserisci nome esame: ");
+		String nome = input.next();
+		return nome;
+	}
+	
+	private int idEsame() {
+		System.out.print("Inserisci ID esame: ");
+		int id = input.nextInt();
+		return id;
 	}
 	
 	//OUTPUT piano di studi

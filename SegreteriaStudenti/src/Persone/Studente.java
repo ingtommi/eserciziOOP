@@ -15,7 +15,6 @@ public class Studente extends Persona {
     private int esamiProfitto = 0;
     private float mediaAritmetica = 0;
     private int sommaVoti= 0;
-    //TODO: controllare anche qui se codice vale in generale o no
 	Test test = new Test();
 	InOut out = new InOut();
 	
@@ -56,7 +55,7 @@ public class Studente extends Persona {
 		return newEsame;
 	}
 	
-	public Esame findEsame(double id) {
+	public Esame findEsame(int id) {
 		Esame newEsame = null;
 		for (Esame esame : pianoStudio)
 		{
