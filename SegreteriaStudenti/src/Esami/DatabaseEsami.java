@@ -22,7 +22,7 @@ public class DatabaseEsami {
 			new Esame("Campi elettromagnetici", 9),
 			new Esame("Elementi di elettronica", 9),
 			new Esame("Teoria dei segnali", 6),
-			new Esame("Elementi di Controlli Automatici", 9),
+			new Esame("Elementi di controlli automatici", 9),
 			new Esame("Misure elettroniche", 9),
 			new Esame("Sistemi elettronici", 6),
 			new Esame("Programmazione ad oggetti", 9),
@@ -37,7 +37,7 @@ public class DatabaseEsami {
 			new Esame("Comunicazioni ottiche", 9),
 			new Esame("Reti di telecomunicazioni", 9),
 			new Esame("Sistemi di telecomunicazioni", 9),
-			new Esame("Lingua straniera",3),
+			new Esame("Lingua straniera", 3),
 			
 	};
 }
