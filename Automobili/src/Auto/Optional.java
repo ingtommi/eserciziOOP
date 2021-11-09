@@ -2,8 +2,7 @@ package Auto;
 
 public class Optional {
 
-
-    private int codice;   
+	private int codice;   
     private String descrizione;
     private int valore;
     public Optional(int codice, int valore, String descrizione)  {

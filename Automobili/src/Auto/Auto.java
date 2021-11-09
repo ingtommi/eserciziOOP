@@ -1,22 +1,21 @@
 package Auto;
-
  
 import java.util.ArrayList;
 import Motori.*;
 
 public class Auto {
 	
-	protected  ArrayList<Optional> optionals = new ArrayList<Optional>();
+	protected ArrayList<Optional> optionals = new ArrayList<Optional>();
 	protected Motore motore;
 	protected String modello;
 	protected String marca;
 	protected String targa;
 	
 	public Auto(String targa, String marca, String modello, Motore motore) {
-			this.marca = marca;
-			this.targa = targa;
-			this.modello = modello;
-			this.motore = motore;
+		this.marca = marca;
+		this.targa = targa;
+		this.modello = modello;
+		this.motore = motore;
 	 }
 	
 	public String getTarga() {return targa;}
