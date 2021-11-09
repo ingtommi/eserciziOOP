@@ -16,7 +16,7 @@ public class Test {
 	
 	public boolean getFull() { return this.full; }
 	
-	//TODO: modificare o togliere
+	//TODO: modificare (deve controllare admin.getStato()) o togliere
 	public boolean isOpen() {
 		return true;
 	}

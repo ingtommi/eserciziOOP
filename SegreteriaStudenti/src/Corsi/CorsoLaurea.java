@@ -27,24 +27,24 @@ public class CorsoLaurea {
 			listaStudenti.add(studente);
 	}
 	
-	public Studente findStudente(String cognomeStudente) {
-		Studente newstudente = null;
+	public boolean findStudente(String cognomeStudente) {
+		boolean find = false;
 		for(Studente studente : listaStudenti) {
 			if(studente.getCognome().equals(cognomeStudente)) {
-				newstudente = studente;
+				find = true;
 		   	}
 		}
-		return newstudente;
+		return find;
     }
 	
-	public Studente findStudente(int matricolaStudente) {
-		Studente newstudente = null;
+	public boolean findStudente(int matricolaStudente) {
+		boolean find = false;
 		for(Studente studente : listaStudenti) {
 			if(studente.getMatricola() == matricolaStudente) {
-				newstudente = studente;
+				find = true;
 		   	}
 		}
-		return newstudente;
+		return find;
    }
 	
     

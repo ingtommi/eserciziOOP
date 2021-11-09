@@ -8,7 +8,7 @@ import Main.*;
 
 public class Studente extends Persona {
 
-	private static int matricolaUltima = 100;
+	private static int matricolaUltima = 1000;
 	private int matricola;
 	private ArrayList<Esame> pianoStudio = new ArrayList<Esame>();
 	private int crediti = 0;
@@ -45,24 +45,24 @@ public class Studente extends Persona {
 			pianoStudio.remove(esame);
 	}
 	
-	public Esame findEsame(String nomeEsame) {
-		Esame newEsame = null;
+	public boolean findEsame(String nomeEsame) {
+		boolean find = false;
 		for (Esame esame : pianoStudio)
 		{
 			if(esame.getNome().equals(nomeEsame))
-				newEsame = esame;
+				find = true;
 		}
-		return newEsame;
+		return find;
 	}
 	
-	public Esame findEsame(int id) {
-		Esame newEsame = null;
+	public boolean findEsame(int id) {
+		boolean find = false;
 		for (Esame esame : pianoStudio)
 		{
 			if(esame.getId()==id)
-				newEsame = esame;
+				find = true;;
 		}
-		return newEsame;
+		return find;
 	}
 	
 	public void insertEsito(Profitto esame, int voto) {

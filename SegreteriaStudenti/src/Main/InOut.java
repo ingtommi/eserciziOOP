@@ -15,8 +15,10 @@ public class InOut {
 	//costruttore
 	public InOut() {}
     
-	//TODO: fare in modo che nei sottomenu admin/studente dopo una azione si possa tornare
-	      //scelte e farne altre
+	//TODO: tornare indietro nei sottomenù dopo una scelta
+	//TODO: verificare se corretto utilizzare metodi ausiliari
+	//TODO: implementare output errore quando non modifica piano per finestra chiusa o sforo
+	
 	public void azioni() {
 		System.out.println("\n***** BENVENUTO UTENTE *****\n");
 		while(avanti1) {
@@ -72,11 +74,15 @@ public class InOut {
 							switch(scelta5) {
 							case 1: System.out.print("Inserisci cognome studente: ");
 									String cognome = input.next();
-									corso().findStudente(cognome);
+									if(corso().findStudente(cognome))
+										System.out.println("\nStudente presente!");
+									else System.out.println("\nStudente non presente!");
 									break;
 							case 2: System.out.print("Inserisci matricola studente: ");
 									int matricola = input.nextInt();
-									corso().findStudente(matricola);
+									if(corso().findStudente(matricola))
+										System.out.println("\nStudente presente!");
+									else System.out.println("\nStudente non presente!");
 									break;
 							}
 							break;
@@ -94,15 +100,19 @@ public class InOut {
 							break;
 					case 9: studente().removeEsame(esame());
 							break;
-					case 10:System.out.println("1) Cerca per nome: ");
-							System.out.println("2) Cerca per ID: ");
+					case 10:System.out.println("1) Cerca per nome");
+							System.out.println("2) Cerca per ID");
 							System.out.print("\nSeleziona: ");
 							byte scelta6 = input.nextByte();
 							System.out.println();
 							switch(scelta6) {
-							case 1: studente().findEsame(nomeEsame());
+							case 1: if(studente().findEsame(nomeEsame()))
+										System.out.println("\nEsame presente!");
+									else System.out.println("\nEsame non presente!");
 									break;
-							case 2: studente().findEsame(idEsame());
+							case 2: if(studente().findEsame(idEsame()))
+										System.out.println("\nEsame presente!");
+									else System.out.println("\nEsame non presente!");
 									break;
 							}
 							break;
@@ -293,6 +303,4 @@ public class InOut {
 		if(laureati == 0)
 			System.out.println("Nessuno studente ancora laureato!");
 	}
-	
-	//TODO: implementare output errore quando non modifica piano per finestra chiusa o sforo
 }
