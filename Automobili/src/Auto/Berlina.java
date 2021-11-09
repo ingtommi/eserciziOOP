@@ -1,4 +1,5 @@
 package Auto;
+import Motori.*;
 
 public class Berlina extends Auto {
 	 

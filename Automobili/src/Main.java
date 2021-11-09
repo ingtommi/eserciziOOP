@@ -10,9 +10,9 @@ public class Main {
 		Optional op3 = new Optional(78, 2000, "Climatizzatore automatico");
 		Optional op4 = new Optional(90, 500, "Caricatore CD");
 		
-		Automobile auto[] = new Automobile[4];
+		Auto auto[] = new Auto[4];
 		
-		auto[0] = new Automobile("RE 8888888", "FIAT", "Seicento", new MotoreBenzina(1000,4));
+		auto[0] = new Auto("RE 8888888", "FIAT", "Seicento", new MotoreBenzina(1000,4));
 		auto[1] = new Berlina("BO 987654321", "MERCEDES", "S", new MotoreDiesel2500());
 		auto[2] = new Coupe("RA 33333333", "FIAT", "Punto", new MotoreBenzina(1200,4));
 		auto[3] = new Coupe("MI 7777777", "Audi", "A4", new MotoreDiesel(1800,4));
@@ -21,5 +21,22 @@ public class Main {
 		auto[0].addOptional(op2);
 		auto[3].addOptional(op3);
 		auto[3].addOptional(op4);
+		
+		for(int i=0;i<auto.length;i++){
+		    System.out.println("\nAuto " + (i+1));
+		    System.out.println("Targa: " + auto[i].getTarga());
+		    System.out.println("Modello: " + auto[i].getModello());
+		    System.out.println("Coupe': " + auto[i].isCoupe());
+		    
+		    // Definisco un oggetto Motore, per richiamare i vari metodi
+		    Motore mot = auto[i].getMotore();
+		    System.out.println("Cilindrata = " + mot.getCilindrata());
+		    System.out.println("Potenza = " + mot.potenza());
+		    System.out.println("Diesel = " + mot.isDiesel());
+		    
+		    auto[i].getOpt().get(i).toString();
+		    
 	}
+}
+	
 }
