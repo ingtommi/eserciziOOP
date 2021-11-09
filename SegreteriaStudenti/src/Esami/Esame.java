@@ -5,8 +5,7 @@ public class Esame {
 	
 	private String nome;
 	private int crediti;
-	private int voto = 0;;
-	private static int idUltimo = 0;
+	private int voto = 0;	private static int idUltimo = 0;
 	private int id;
 	boolean superato = false;
 	
