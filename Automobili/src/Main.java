@@ -22,21 +22,24 @@ public class Main {
 		auto[3].addOptional(op3);
 		auto[3].addOptional(op4);
 		
-		for(int i=0;i<auto.length;i++){
+		for(int i=0;i <auto.length; i++){
 		    System.out.println("\nAuto " + (i+1));
 		    System.out.println("Targa: " + auto[i].getTarga());
 		    System.out.println("Modello: " + auto[i].getModello());
 		    System.out.println("Coupe': " + auto[i].isCoupe());
 		    
-		    // Definisco un oggetto Motore, per richiamare i vari metodi
 		    Motore mot = auto[i].getMotore();
 		    System.out.println("Cilindrata = " + mot.getCilindrata());
 		    System.out.println("Potenza = " + mot.potenza());
 		    System.out.println("Diesel = " + mot.isDiesel());
 		    
-		    auto[i].getOpt().get(i).toString();
-		    
-	}
-}
-	
+		    if(auto[i].getOpt().size()==0)
+		    	System.out.println("Nessun optional presente!");
+		    else {
+		    	for(Optional opt : auto[i].getOpt()) {
+			   		System.out.println(opt);
+			   	}
+		    }
+		 }	
+	}	
 }

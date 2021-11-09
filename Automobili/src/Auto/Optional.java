@@ -29,6 +29,6 @@ public class Optional {
     }
 
     public String toString() {
-    	return "Optional " + codice + " : " + descrizione;
+    	return "Optional: " + this.codice + " | " + this.descrizione;
     }
 }
