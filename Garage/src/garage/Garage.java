@@ -21,7 +21,7 @@ public class Garage {
 	public VeicoloAMotore estraiVeicolo(int posto){
 		VeicoloAMotore v = null;
 	    if(posto<0 || posto>14) {
-	    	System.out.println("ERRORE");
+	    	System.out.println("\nERRORE");
 	    }
 	    else {
 	    	v = veicolo[posto];
@@ -32,8 +32,12 @@ public class Garage {
 
 	
 	public void stampaSituazionePosti(){
+		String out;
 		for(int i=0; i<15; i++) {
-			System.out.println(veicolo[i]);
+			if(veicolo[i]==null)
+				out = "VUOTO";
+			else out = veicolo[i].toString();
+			System.out.println("Posto: " + i + " --> " + out);
 		}
 	}
 }
