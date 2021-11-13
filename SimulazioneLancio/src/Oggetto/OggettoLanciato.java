@@ -1,10 +1,10 @@
 package Oggetto;
 
-public class OggettoLanciato {
-
+public abstract class OggettoLanciato {
+	
 	protected int x;
 	
-	public int getValore() { return this.x; }
-	public void lancio() {}
+	public abstract void lancio();
+	public int getValore() { return this.x; } ;
 	public void print() { System.out.println(getValore()); }
 }
