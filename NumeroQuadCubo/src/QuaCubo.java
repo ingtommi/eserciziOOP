@@ -1,5 +1,6 @@
 
 public class QuaCubo {
+	
 	public static void main(String args[]) {
 		Ritorno r = new Numero();
 		Quadrato q = new Quadrato();
