@@ -12,7 +12,7 @@ public abstract class Opera {
 	public boolean equals(Object o) {
 		if(o instanceof Opera) {
 			Opera op = (Opera) o;
-			return ((op.titolo.equals(this.titolo))&&(op.artista.equals(this.titolo)));
+			return ((op.titolo.equals(this.titolo))&&(op.artista.equals(this.artista)));
 		}
 		else return false;
 	}
