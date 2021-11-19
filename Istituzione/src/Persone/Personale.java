@@ -23,7 +23,7 @@ public abstract class Personale {
 	public void setTelefono(String tel) {this.telefono = tel; }
 	
 	public String toString() {
-		return "ID: "+ ID + " | Nome: " + nome + " | Indirizzo: " + indirizzo + " | Telefono: " + telefono;
+		return "\nID: "+ ID + " | Nome: " + nome + " | Indirizzo: " + indirizzo + " | Cellulare: " + telefono;
 	}
 	
 	public abstract double calcolaPaga();
