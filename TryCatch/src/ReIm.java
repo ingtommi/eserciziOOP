@@ -7,38 +7,36 @@ public class ReIm {
 	public static void main (String[] args) throws IOException{
 
 		Scanner input = new Scanner(System.in);
-		String s;
 		double r=0,i=0;
-		System.out.print("Inserire numero reale o immaginario(immaginario preceduto dalla j): ");
-		s = input.nextLine();
+		System.out.print("Inserire numero reale o immaginario (immaginario preceduto dalla j): ");
+		String s = input.nextLine();
 		boolean iNeg = false;
 		try{
 			r = Double.parseDouble(s);
-		}catch(NumberFormatException e){
-			
-			if(s.contains("+j")){
+		} catch(NumberFormatException e) {
+			if(s.contains("+j")) {
 				String[] n = s.split("\\+j");
 				r = Double.parseDouble(n[0]);
 				i = Double.parseDouble(n[1]);
 			}
-			else if (s.contains("-j")) {{
-				if(s.charAt(1)=='j') { i=Double.parseDouble(s.substring(2,s.length()));}
+			else if(s.contains("-j")) {
+				{
+				if(s.charAt(1)=='j') { i = Double.parseDouble(s.substring(2,s.length())); }
 				else {String[] n = s.split("-j");
 				r = Double.parseDouble(n[0]);
 				i = Double.parseDouble(n[1]);}
-			}iNeg = true;
+				}
+			iNeg = true;
 			}
-			else if (s.contains("j")) {
-				r=0;
-				i=Double.parseDouble(s.substring(1,s.length())); 
+			else if(s.contains("j")) {
+				r = 0;
+				i = Double.parseDouble(s.substring(1,s.length())); 
 			}
-			else System.out.println("impossibile");
+			else System.out.println("Impossibile!");
 		}//fine try-catch
-		if(r!=0)System.out.println("Numero Reale:"+r);
-		if(iNeg)System.out.println("Numero Immaginario:-"+i);
-		else System.out.println("Numero Immaginario:"+i);
+		if(r!=0) System.out.println("Numero Reale: " + r);
+		if(iNeg) System.out.println("Numero Immaginario: -" + i);
+		else System.out.println("Numero Immaginario: " + i);
 		input.close();
-	}}
-
-
-
+	}
+}
