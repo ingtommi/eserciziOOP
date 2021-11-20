@@ -15,8 +15,7 @@ public class ReIm {
 		try{
 			r = Double.parseDouble(s);
 		}catch(NumberFormatException e){
-			s.replaceAll("[+]", "+");
-			s.replaceAll("[-]", "-");
+			
 			if(s.contains("+j")){
 				String[] n = s.split("\\+j");
 				r = Double.parseDouble(n[0]);
