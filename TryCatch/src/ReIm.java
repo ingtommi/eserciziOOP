@@ -14,19 +14,20 @@ public class ReIm {
 		try{
 			r = Double.parseDouble(s);
 		} catch(NumberFormatException e) {
-			if(s.contains("+j")) {
-				String[] n = s.split("\\+j");
+			if(s.contains("+j")) {{
+				if(s.charAt(1)=='j') { i = Double.parseDouble(s.substring(2,s.length())); }
+				else {String[] n = s.split("\\+j");
 				r = Double.parseDouble(n[0]);
 				i = Double.parseDouble(n[1]);
-			}
+				}}}
 			else if(s.contains("-j")) {
 				{
-				if(s.charAt(1)=='j') { i = Double.parseDouble(s.substring(2,s.length())); }
-				else {String[] n = s.split("-j");
-				r = Double.parseDouble(n[0]);
-				i = Double.parseDouble(n[1]);}
+					if(s.charAt(1)=='j') { i = Double.parseDouble(s.substring(2,s.length())); }
+					else {String[] n = s.split("-j");
+					r = Double.parseDouble(n[0]);
+					i = Double.parseDouble(n[1]);}
 				}
-			iNeg = true;
+				iNeg = true;
 			}
 			else if(s.contains("j")) {
 				r = 0;
