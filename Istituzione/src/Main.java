@@ -1,15 +1,17 @@
 import Persone.*;
 import Eccezioni.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
 
 	public static void main(String[] args) throws EccezioneCellulare, EccezioneCodice, 
-													EccezionePagaNegativa, EccezioneGiorniNegativi {
+													EccezionePagaNegativa, EccezioneGiorniNegativi, IOException {
 		
 		//TODO: mettere lista persona in file di testo
 		
 		Scanner input = new Scanner(System.in);	
+		File file = new File();
 		Vector<Personale> lista = new Vector<Personale>();
 		
 		//MENU
@@ -21,6 +23,7 @@ public class Main {
 			System.out.println("1) Inserisci persona");
 			System.out.println("2) Calcola paga");
 			System.out.println("3) Lista persone");
+			System.out.println("4) Trascrivi su file");
 			System.out.print("\nSeleziona opzione: ");
 			byte sc1 = input.nextByte();
 			switch(sc1) {
@@ -191,7 +194,7 @@ public class Main {
 			case 2: System.out.print("\nInserisci ID: ");
 					int id = input.nextInt();
 					for(Personale p : lista) {
-						if(p.getID() == id) {
+						if(p.getID()==id) {
 							System.out.println("\nPaga del dipendente #" + id + " = $" + p.calcolaPaga());
 						}
 						else System.out.println("\nNessuna persona associata a questo ID!");
@@ -205,6 +208,10 @@ public class Main {
 							System.out.println(p);
 						}
 					}
+					break;
+			//SCRITTURA FILE
+			case 4: if(file.WriteFile(lista))
+						System.out.println("\nOperazione effettuata correttamente!");
 					break;
 			}
 		}
