@@ -7,7 +7,7 @@ public class RegistroEtaCompleto {
 
 	private String file;
 	private Vector<NomeEta> dati = new Vector<NomeEta>();
-	private boolean modificato = false;
+	private boolean salvato = false;
 
 	//costruttore
 	public RegistroEtaCompleto(String file) {
@@ -24,6 +24,8 @@ public class RegistroEtaCompleto {
 			System.out.println("\nERRORE: " + e);
 		}
 	}
+
+	public boolean getSalvato() {return salvato;}
 
 	public void viewRegistro() {
 		System.out.println();
@@ -42,7 +44,36 @@ public class RegistroEtaCompleto {
 			System.out.println(nome + " E' GIA' PRESENTE NEL REGISTRO!");
 		} else {
 			dati.add(nomeeta);
-			modificato = true;
+			salvato = false;
 		}
+	}
+
+
+	public int incrementaEta(String nome) {
+		for (NomeEta nomeeta : dati) {
+			if (nomeeta.getNome().equals(nome)) {
+				nomeeta.incrementaEta();
+				salvato = false;
+				return nomeeta.getEta();
+			}
+		}
+		return 0;
+	}
+
+
+	public boolean salva() {
+		if (salvato) {
+			try {
+				ObjectOutputStream file_output = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
+				file_output.writeObject(dati);
+				file_output.close();
+				salvato = true; 
+				return salvato;
+			} catch (IOException e) {
+				System.out.println("ERRORE di I/O");
+				System.out.println(e);
+				return salvato;
+			}		
+		} else return false;
 	}
 }
