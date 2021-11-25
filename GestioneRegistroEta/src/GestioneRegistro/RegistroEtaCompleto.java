@@ -44,7 +44,7 @@ public class RegistroEtaCompleto {
 	public boolean getFileOk() { return fileok; }
 
 	public void viewRegistro() {
-		if(dati.isEmpty())
+		if(dati==null) //non utilizzo isEmpty() perchè dava problemi
 			System.out.println("\nREGISTRO VUOTO!");
 		else {
 			System.out.println("\nREGISTRO DELLE ETA':\n");

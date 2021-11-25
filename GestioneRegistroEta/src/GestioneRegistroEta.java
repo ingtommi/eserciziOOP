@@ -21,7 +21,7 @@ public class GestioneRegistroEta {
 		
 		//MENU
 		while(go) {
-			System.out.println("\n*** MENU' ***");
+			System.out.println("\n*** MENU' ***\n");
 			System.out.println("0) Visualizza registro");
 			System.out.println("1) Aggiungi elemento");
 			System.out.println("2) Incrementa età");
