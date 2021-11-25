@@ -21,9 +21,6 @@ public class RegistroEtaCompleto {
 		} catch (FileNotFoundException e) {
 			System.out.println("\nERRORE: FILE NON TROVATO!");
 			fileok = false;
-		} catch (ClassNotFoundException e) {
-			System.out.println("\nERRORE: OGGETTO NON PRESENTE!");
-			fileok = false;
 		} catch (EOFException e) {
 			//se il file è vuoto dà problemi, scrivendoci dentro un oggetto null risolvo
 			try {
@@ -32,9 +29,14 @@ public class RegistroEtaCompleto {
 			fo.close();
 			} catch(IOException e1) {
 				System.out.println("\nERRORE: " + e);
+				fileok = false;
 			}
+		} catch (ClassNotFoundException e) {
+			System.out.println("\nERRORE: OGGETTO NON PRESENTE!");
+			fileok = false;
 		} catch (IOException e) {
 			System.out.println("\nERRORE: " + e);
+			fileok = false;
 		}
 	}
 	
