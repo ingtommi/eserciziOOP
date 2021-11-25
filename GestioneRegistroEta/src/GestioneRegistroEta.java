@@ -1,5 +1,4 @@
 import GestioneRegistro.*;
-
 import java.util.Scanner;
 
 
@@ -8,43 +7,59 @@ public class GestioneRegistroEta {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		RegistroEtaCompleto registro;
+		boolean go = true;
 
-		System.out.print("Inserisci il nome del file di registro: ");
-		String file = input.nextLine();
-
-		RegistroEtaCompleto registro = new RegistroEtaCompleto(file);
-
-		//MENU
 		System.out.println("***** BENVENUTO UTENTE *****");
-		System.out.println("0) Visualizza registro");
-		System.out.println("1) Aggiugni elemento");
-		System.out.println("2) Incrementa et‡");
-		System.out.println("3) Salva dati");
-		System.out.println("4) Esci");
-		System.out.print("\nSeleziona opzione: ");
-		byte s = input.nextByte();
 
-		switch(s) {
-		case 0 : registro.viewRegistro();
-		         break;
-		case 1 : System.out.println("Inserisci nome:");
-		         String nome = input.nextLine();
-		         System.out.println("Inserisci eta':");
-		         int eta = input.nextInt();
-			     registro.addStudente(nome, eta) ;
-			     break;
-		case 2 : System.out.println("Inserisci nome:");
-		         String name = input.nextLine();
-		         int ris = registro.incrementaEta(name);
-		         if (ris==0)
-			     System.out.println("Nominativo non trovato");
-		         else
-			     System.out.println("La nuova et‡ Ë " + ris);
-		         break;	     
-		case 3 : registro.salva();
-		         break;
-		case 4 : // 5) Esci --> controllare RegistroEtaCompleto.modificato per avvertire se si √® usciti senza salvare
-
-                 }
-}
+		//NOME FILE: test --> test.dat
+		do {
+			System.out.print("\nInserisci il nome del file di registro (<nome>.dat: ");
+			String file = input.nextLine();
+			registro = new RegistroEtaCompleto(file);
+		} while(!registro.getFileOk());
+		
+		//MENU
+		while(go) {
+			System.out.println("\n*** MENU' ***");
+			System.out.println("0) Visualizza registro");
+			System.out.println("1) Aggiungi elemento");
+			System.out.println("2) Incrementa et√†");
+			System.out.println("3) Salva dati");
+			System.out.println("4) Esci");
+			System.out.print("\nSeleziona opzione: ");
+			byte s1 = input.nextByte();
+			switch(s1) {
+			case 0 : registro.viewRegistro();
+			         break;
+			case 1 : System.out.println("\nInserisci nome: ");
+			         String nome1 = input.nextLine().toUpperCase();
+			         System.out.println("Inserisci eta': ");
+			         int eta = input.nextInt();
+				     registro.addStudente(nome1,eta);
+				     break;
+			case 2 : System.out.println("\nInserisci nome: ");
+			         String nome2 = input.nextLine().toUpperCase();
+			         registro.incrementaEta(nome2);
+			         break;	     
+			case 3 : registro.salva();
+			         break;
+			case 4 : if(registro.getSalvato()) {
+						go = false;
+						break;
+					 } else {
+						 System.out.print("\nFILE NON AGGIORNATO: VUOI SALVARE PRIMA DI USCIRE? [Y]/[N]: ");
+						 String s2 = input.next();
+						 switch(s2) {
+						 case "Y": registro.salva();
+						 		   go = false;
+						 		   break;
+						 case "N": go = false;
+						 		   break;
+						 }
+					 }
+	        }
+		}
+		System.out.println("\nA presto!");
+	}
 }
