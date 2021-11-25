@@ -7,22 +7,32 @@ public class RegistroEtaCompleto {
 
 	private String file;
 	private Vector<NomeEta> dati = new Vector<NomeEta>();
-	private boolean salvato = false;
-	private boolean fileok = false;
+	private boolean salvato = true;
+	private boolean fileok = true;
 
 	//costruttore
 	public RegistroEtaCompleto(String file) {
 		this.file = file;
-		//TODO: evitare errore se apro file vuoto
 		try {
 			ObjectInputStream file_input = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)));
 			dati = (Vector<NomeEta>) file_input.readObject();
 			file_input.close();
 			fileok = true;
 		} catch (FileNotFoundException e) {
-			System.out.println("\nATTENZIONE: FILE NON TROVATO!");
+			System.out.println("\nERRORE: FILE NON TROVATO!");
+			fileok = false;
 		} catch (ClassNotFoundException e) {
-			System.out.println("\nERRORE: " + e);
+			System.out.println("\nERRORE: OGGETTO NON PRESENTE!");
+			fileok = false;
+		} catch (EOFException e) {
+			//se il file è vuoto dà problemi, scrivendoci dentro un oggetto null risolvo
+			try {
+			ObjectOutputStream fo = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
+			fo.writeObject(null);
+			fo.close();
+			} catch(IOException e1) {
+				System.out.println("\nERRORE: " + e);
+			}
 		} catch (IOException e) {
 			System.out.println("\nERRORE: " + e);
 		}
@@ -64,12 +74,10 @@ public class RegistroEtaCompleto {
 		}
 	}
 
-	public boolean salva() {
+	public void salva() {
 		if(salvato) {
 			System.out.println("\nFILE GIA' AGGIORNATO!");
-			return true;
 		} else {
-			boolean ok = true;
 			try {
 				ObjectOutputStream file_output = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
 				file_output.writeObject(dati);
@@ -77,10 +85,8 @@ public class RegistroEtaCompleto {
 				System.out.println("\nOPERAZIONE AVVENUTA CORRETTAMENTE!");
 				salvato = true; 
 			} catch (IOException e) {
-				System.out.println("ERRORE di I/O: " + e);
-				ok = false;
+				System.out.println("ERRORE: " + e);
 			}
-			return ok;
 		}
 	}
 }

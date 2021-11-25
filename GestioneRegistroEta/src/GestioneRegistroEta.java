@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GestioneRegistroEta {
 
 	public static void main(String[] args) {
-
+		
 		Scanner input = new Scanner(System.in);
 		RegistroEtaCompleto registro;
 		boolean go = true;
@@ -14,7 +14,7 @@ public class GestioneRegistroEta {
 
 		//NOME FILE: test --> test.dat
 		do {
-			System.out.print("\nInserisci il nome del file di registro (<nome>.dat: ");
+			System.out.print("\nInserisci il nome del file di registro (<nome>.dat): ");
 			String file = input.nextLine();
 			registro = new RegistroEtaCompleto(file);
 		} while(!registro.getFileOk());
@@ -32,13 +32,15 @@ public class GestioneRegistroEta {
 			switch(s1) {
 			case 0 : registro.viewRegistro();
 			         break;
-			case 1 : System.out.println("\nInserisci nome: ");
+			case 1 : System.out.print("\nInserisci nome: ");
+					 input.nextLine();
 			         String nome1 = input.nextLine().toUpperCase();
-			         System.out.println("Inserisci eta': ");
+			         System.out.print("Inserisci eta': ");
 			         int eta = input.nextInt();
 				     registro.addStudente(nome1,eta);
 				     break;
-			case 2 : System.out.println("\nInserisci nome: ");
+			case 2 : System.out.print("\nInserisci nome: ");
+					 input.nextLine();
 			         String nome2 = input.nextLine().toUpperCase();
 			         registro.incrementaEta(nome2);
 			         break;	     
